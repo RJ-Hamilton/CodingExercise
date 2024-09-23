@@ -41,8 +41,14 @@ class MainViewModel @Inject constructor(
      *
      * @throws Exception In case of an error during data fetching or processing.
      */
-    fun fetchData() {
-        updateLoadingState(isLoading = true)
+    fun fetchData(isRefreshing: Boolean = false) {
+        if (isRefreshing) {
+            _uiState.update { currentState ->
+                currentState.copy(isRefreshing = true)
+            }
+        } else {
+            updateLoadingState(isLoading = true)
+        }
 
         viewModelScope.launch(coroutineDispatcher) {
             try {
@@ -51,6 +57,7 @@ class MainViewModel @Inject constructor(
                 _uiState.update { currentState ->
                     currentState.copy(
                         isLoading = false,
+                        isRefreshing = false,
                         hiringDetailUiModels = hiringDetailsMap.map {
                             HiringDetailUiModel(
                                 listId = it.listId,
@@ -63,11 +70,16 @@ class MainViewModel @Inject constructor(
                 _uiState.update { currentState ->
                     currentState.copy(
                         isLoading = false,
+                        isRefreshing = false,
                         showErrorMessage = true
                     )
                 }
             }
         }
+    }
+
+    fun refreshData() {
+        fetchData(isRefreshing = true)
     }
 
     /**
