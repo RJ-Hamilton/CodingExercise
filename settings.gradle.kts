@@ -19,3 +19,5 @@ dependencyResolutionManagement {
 rootProject.name = "CodingExercise"
 
 include(":app")
+include(":services:hiring:api")
+include(":services:hiring:impl")
