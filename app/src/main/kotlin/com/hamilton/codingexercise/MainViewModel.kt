@@ -82,6 +82,12 @@ class MainViewModel @Inject constructor(
         fetchData(isRefreshing = true)
     }
 
+    fun dismissErrorMessage() {
+        _uiState.update { currentState ->
+            currentState.copy(showErrorMessage = false)
+        }
+    }
+
     /**
      * Updates the loading state in the UI state.
      *

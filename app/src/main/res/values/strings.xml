@@ -3,4 +3,10 @@
 
     <string name="data_item_view_list_id">List ID:</string>
     <string name="data_item_view_item">Item #:</string>
+
+    <string name="error_dialog_title">Network Error</string>
+    <string name="error_dialog_description">There was a problem connecting to the network. Please check your connection and try again.</string>
+    <string name="error_dialog_retry_button">Retry</string>
+    <string name="error_dialog_dismiss_button">Dismiss</string>
+
 </resources>
