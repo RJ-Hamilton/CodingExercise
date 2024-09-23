@@ -41,5 +41,11 @@ dependencies {
     implementation(libs.squareup.okhttp3.logging)
 
     implementation(libs.dagger.hilt)
+
     kapt(libs.dagger.hilt.compiler)
+
+    testImplementation(kotlin("test"))
+    testImplementation(libs.junit)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.mockk)
 }
